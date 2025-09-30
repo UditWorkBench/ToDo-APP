@@ -8,7 +8,6 @@
 
 .fullscreen {
   min-height: 100vh;
-  padding: 20px;
   background: #f9f9f9;
 }
 
@@ -189,7 +188,7 @@
 }
 
 .search-container {
-  width: 90%;
+  width: calc(100vw - 115px);
   margin-bottom: 20px;
   position: relative;
 }
@@ -271,6 +270,10 @@
   border-radius: 4px;
   font-size: 1rem;
   margin-bottom: 20px;
+}
+
+.todo-form select#status-select {
+  width: 100%;
 }
 
 textarea {
