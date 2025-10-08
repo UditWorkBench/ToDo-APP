@@ -46,7 +46,7 @@ export default function TodoApp() {
   // Default: list view
   return (
     <div className="container">
-      <Header title="ToDo App" />
+      <Header title="TO-DO APP" />
       <TodoList
         todos={todos}
         onDelete={deleteTodoItem}

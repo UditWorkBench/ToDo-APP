@@ -14,8 +14,8 @@ export function Accordion({ title, count, children, defaultOpen = false }: Accor
     <div className="accordion">
       <div className="accordion-header" onClick={() => setOpen(!open)}>
         <h5>{title}</h5>
-        {typeof count === "number" && <span className="badge">({count})</span>}
-        {open ? (<span className="accordion-caret">&#9650;</span>) : (<span className="accordion-caret">&#9660;</span>) }
+        {typeof count === "number" && <>{"("}<span className="badge">{count}</span>{")"}</>}
+        {!open ? (<span className="accordion-caret">{">"}</span>) : (<span className="accordion-caret">{"<"}</span>) }
       </div>
       {open && <div className="accordion-body">{children}</div>}
     </div>

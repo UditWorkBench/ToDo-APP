@@ -8,69 +8,93 @@
 
 .fullscreen {
   min-height: 100vh;
-  background: #f9f9f9;
+  background: #FFF;
 }
 
 .todo-list {
-  margin: 20px;
+  margin: 20px 20px 60px 20px;
 }
 
 .header {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 16px;
-  background: #007bff;
-  color: white;
+  padding: 16px 20px;
+  background: #034EA2;
+  color: #FFF;
 }
 
 .header h1 {
   margin: 0;
   font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.header button.back-btn + h1 {
+  padding-left: 40px;
 }
 
 .back-btn {
   background: transparent;
   border: none;
-  color: white;
-  font-size: 1.5rem;
+  color: #FFF;
   cursor: pointer;
+  font-size: xxx-large;
+  font-family: monospace;
+  position: absolute;
 }
 
 .accordion {
-  border: 1px solid #ccc;
   border-radius: 6px;
   margin-bottom: 20px;
-  background: #fafafa;
+  background: #FFF;
 }
 
 .accordion-header {
   display: flex;
-  justify-content: space-between;
-  padding: 10px 14px;
+  padding: 12px 14px;
   cursor: pointer;
-  background: #d8ebf0;
+  background: #F3F6F9;
+  border: 1px solid #F3F6F9;
+  border-radius: 3px;
 }
 
 .accordion-header h5, .accordion-body h5 {
   margin: 0;
   font-weight: 400;
+  margin-right: 4px;
 }
 
 .accordion-header .badge {
   margin-bottom: 0px;
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 0.9em;
+}
+
+.accordion-header .accordion-caret,
+.dropdown-header  .dropdown-caret {
+  color: #034EA2;
+  rotate: 90deg;
+  height: 20px;
   position: absolute;
-  left: 105px;
+  right: 30px;
+  font-size: 28px;
+  font-family: cursive;
 }
 
-.accordion-header .accordion-caret {
-  color:#007bff;
+.dropdown-header .dropdown-caret { 
+  right: 0px;
 }
 
+@keyframes accordianAnimation {
+  from {opacity: 0.0;}
+  to {opacity: 1.0;}
+}
 
 .accordion-body {
-  padding: 10px 14px;
+  animation-name: accordianAnimation;
+  animation-duration: 4s;
+  padding: 10px 0px;
 }
 
 .section-title {
@@ -86,12 +110,14 @@
 
 .task-tile {
   background: #fff;
-  border-radius: 8px;
   padding: 15px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+}
+
+.task-tile:hover {
+  background: #F7F7F7;
 }
 
 .task-info {
@@ -101,10 +127,9 @@
 }
 
 .avatar {
-  color: #007bff;
-  background: #fff;
-  border: 1px solid #007bff;
-  font-weight: bold;
+  color: #034EA2;
+  background: #FFF;
+  border: 1px solid #034EA2;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -120,10 +145,10 @@
 }
 
 .details h5 {
-  margin: 0;
-  color: #007bff;
+  margin: 5px 0px;
+  color: #034EA2;
   text-align: left;
-  display: inline;
+  display: inline-block;
   font-size: 1.2em;
   font-weight: 500;
 }
@@ -138,21 +163,27 @@
 }
 
 .status-dot {
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   background: #ff9800;
   border-radius: 50%;
 }
 
 .status-dot.pending {
-  background: #acabab;
+  background: #D0D0D0;
 }
 
 .status-dot.completed {
   background: #048f2e;
 }
 
+.status-dropdown .status-dot {
+  display: inline-block;
+  margin-right: 10px;
+}
+
 .description {
+  padding-bottom: 5px;
   font-size: 0.9em;
   color: #555;
 }
@@ -169,6 +200,11 @@
   flex-direction: row;
   gap: 10px;
   float: inline-end;
+  opacity: 0.0;
+}
+
+.task-tile:hover .actions {
+  opacity: 1.0;
 }
 
 .actions button {
@@ -179,42 +215,54 @@
   color: #888;
 }
 
-.actions button.delete:hover {
+.actions button.delete {
   color: red;
 }
 
+.actions button.delete:hover {
+  text-shadow: 1px 1px 1px #CCC;
+}
+
+.actions button.edit {
+  color: #034EA2;
+}
+
 .actions button.edit:hover {
-  color: #007bff;
+  text-shadow: 1px 1px 1px #CCC;
 }
 
 .search-container {
-  width: calc(100vw - 115px);
-  margin-bottom: 20px;
-  position: relative;
+  width: 100%;
+  display: inline-block;
 }
 
 .search-input {
+  display: inline;
+  margin: auto;
   width: 100%;
+  box-sizing: border-box;
   padding: 12px 40px 12px 32px;
-  border: 1px solid #ccc;
+  border: 1px solid #DDD;
   border-radius: 8px;
-  font-size: 1em;
+  font-size: 0.8em;
   outline: none;
   transition: border-color 0.3s;
+  color: #66676B;
 }
 
 .search-input:focus {
-  border-color: #007bff;
+  border-color: #034EA2;
 }
 
 .search-icon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  float: left;
+  left: 5px;
+  position: relative;
+  transform: rotate(275deg) translateY(-1px) translateX(34px);
   font-size: 1.2em;
-  color: #888;
+  color: #034EA2;
   pointer-events: none;
-  left: 2px;
+  border-color: #FFF;
 }
 
 .no-todos-disclaimer {
@@ -227,31 +275,33 @@
 }
 
 .add-task-btn {
-  background: #007bff;
-    color: #fff;
-    font-weight: bold;
-    border-radius: 50%;
-    width: 45px;
-    height: 46px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2em;
-    border: white;
-    justify-self: end;
-    align-self: self-end;
-    margin: 20px;
+  background: #034EA2;
+  color: #fff;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7em;
+  border: white;
+  justify-self: end;
+  align-self: self-end;
+  margin: 20px;
+  position: fixed;
+  bottom: 0px;
 }
 
 .todo-form {
-  background: #fff;
-  padding: 1rem;
+  height: 100%;
+  background: #FFF;
+  padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .todo-card {
-  margin-bottom: 10px;
+  margin-bottom: 1px;
+  border-bottom: 1px solid #DDD;
 }
 
 .dropdown-wrapper label {
@@ -264,16 +314,56 @@
 .todo-form input[type="text"],
 .todo-form textarea,
 .todo-form select {
-  width: 97%;
-  padding: 0.6rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #DDD;
+  border-radius: 3px;
+  font-size: 0.8em;
   margin-bottom: 20px;
+  box-sizing: border-box;
 }
 
-.todo-form select#status-select {
+.todo-form textarea {
+  height: 70px;
+  font-size: 1em;
+  font-family: serif;
+}
+
+.todo-form .status-dropdown {
   width: 100%;
+  position: relative; 
+  font-family: sans-serif; 
+}
+
+.todo-form .status-dropdown .dropdown-header { 
+  padding: 10px;
+  background: #FFF;
+  border: 1px solid #DDD;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.todo-form .status-dropdown .status-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #FFF;
+  border: 1px solid #DDD;
+  margin-top: 10px;
+  z-index: 10;
+}
+
+.todo-form .status-dropdown .status-menu-item {
+  padding: 10px;
+  cursor: pointer;
+  background: #FFF;
+  margin: 10px;
+}
+
+.todo-form .status-dropdown .status-menu-item.active {
+  background: #DDD;
+  border-radius: 3px;
 }
 
 textarea {
@@ -281,6 +371,7 @@ textarea {
 }
 
 .input-group {
+  margin-top: 30px;
   width: 100%;
 }
 
@@ -289,6 +380,7 @@ textarea {
   align-items: center;
   gap: 0.5rem;
   text-align: left;
+  margin-bottom: 40px;
 }
 
 .button-group {
@@ -299,16 +391,20 @@ textarea {
 }
 
 .cancel-btn {
+  width: 110px;
+  height: 40px;
   background: #fff;
-  border: 2px solid #007bff;
-  color: #007bff;
+  border: 2px solid #034EA2;
+  color: #034EA2;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .update-btn {
-  background: #007bff;
+  width: 110px;
+  height: 40px;
+  background: #034EA2;
   border: none;
   color: #fff;
   padding: 0.5rem 1rem;
@@ -319,4 +415,10 @@ textarea {
 .cancel-btn:hover,
 .update-btn:hover {
   opacity: 0.9;
+}
+
+.no-task-entry {
+  border-bottom: 1px solid #DDD;
+  padding-bottom: 20px;
+  margin-bottom: 0px;
 }
