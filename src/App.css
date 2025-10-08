@@ -6,9 +6,16 @@
   height: 100%;
 }
 
+@keyframes accordianAnimation {
+  from {opacity: 0.0;}
+  to {opacity: 1.0;}
+}
+
 .fullscreen {
   min-height: 100vh;
   background: #FFF;
+  animation-name: accordianAnimation;
+  animation-duration: 4s;
 }
 
 .todo-list {
@@ -84,11 +91,6 @@
 
 .dropdown-header .dropdown-caret { 
   right: 0px;
-}
-
-@keyframes accordianAnimation {
-  from {opacity: 0.0;}
-  to {opacity: 1.0;}
 }
 
 .accordion-body {
